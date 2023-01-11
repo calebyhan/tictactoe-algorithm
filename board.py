@@ -24,7 +24,6 @@ class Board:
             board.append("{} | {} | {}\n".format(i[0], i[1], i[2]))
             board.append("---------\n")
         board = "".join(board[:-1])
-        print(board)
         board = board.replace("-1", " ")
         return board
 
@@ -42,8 +41,13 @@ class Board:
         cases = []
 
     def place(self, pos):
+        # raises error
         x = pos % 3
         y = pos // 3
         if self.board[x][y] != -1:
             self.board[x][y] = self.turn
+        self.switch()
+
+    def botMove(self):
+        # implement rest here i needed a self switch to get my thing working
         self.switch()
