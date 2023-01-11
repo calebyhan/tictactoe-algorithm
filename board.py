@@ -1,4 +1,5 @@
 import random
+import bot
 
 class Board:
     """
@@ -41,7 +42,6 @@ class Board:
         cases = []
 
     def place(self, pos):
-        # raises error
         x = pos % 3
         y = pos // 3
         if self.board[x][y] != -1:
@@ -49,5 +49,4 @@ class Board:
         self.switch()
 
     def botMove(self):
-        # implement rest here i needed a self switch to get my thing working
-        self.switch()
+        self.place(bot.move())
