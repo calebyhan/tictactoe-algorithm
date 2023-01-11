@@ -21,8 +21,8 @@ class Board:
     def __str__(self):
         board = []
         for i in self.board:
-            board.append("{} | {} | {}\n".format(i[0], i[1], i[2]))
-            board.append("---------\n")
+            board.append(" {} | {} | {} \n".format(i[0], i[1], i[2]))
+            board.append("-----------\n")
         board = "".join(board[:-1])
         board = board.replace("-1", " ")
         return board
