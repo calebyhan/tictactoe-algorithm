@@ -3,7 +3,8 @@ import time
 
 def game():
     board1 = board.Board()
-    print(board1)
+    if board1.assign == "You":
+        print(board1)
     while not board1.end:
         if board1.assign == "You":
             print("Your move.")
