@@ -49,4 +49,4 @@ class Board:
         self.switch()
 
     def botMove(self):
-        self.place(bot.move())
+        self.place(bot.move(self.board, self.turn))

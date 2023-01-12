@@ -3,11 +3,14 @@ game.py - have functions to run the game itself
 bot.py - run the algorithm for the bot
 board.py - instantiate board
 
-do you agree with this setup
-
-
 X | X | X
 ---------
 X | X | X
 ---------
 X | X | X
+
+0 | 1 | 2
+---------
+3 | 4 | 5
+---------
+6 | 7 | 8
