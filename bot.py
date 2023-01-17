@@ -1,6 +1,10 @@
 import random
 
 def check_first(board):
+    '''
+    Check if it is the first move
+    '''
+    
     for i in range(len(board)):
         for j in range(len(board[i])):
             if board[i][j] != -1:
@@ -8,6 +12,10 @@ def check_first(board):
     return True
 
 def check_behind(board, bot):
+    '''
+    Check if the user went first
+    '''
+    
     turns = [0, 0]
     for i in range(len(board)):
         for j in range(len(board[i])):
@@ -20,6 +28,10 @@ def check_behind(board, bot):
     return False
 
 def check_iter(board, bot):
+    '''
+    Check how many turns in the game is
+    '''
+    
     ret_1 = 0
     ret_2 = 0
     player = 1
@@ -34,6 +46,10 @@ def check_iter(board, bot):
     return max(ret_1, ret_2)
 
 def ret_empty(board):
+    '''
+    Returns the empty positions
+    '''
+    
     ret_lst = []
     for i in range(len(board)):
         for j in range(len(board[i])):
@@ -45,6 +61,10 @@ def ret_empty(board):
     return ret
 
 def check_win_bot(board, bot):
+    '''
+    Check if the bot can win
+    '''
+    
     cases = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     bot_cases = []
     for j in range(len(board)):
@@ -60,6 +80,10 @@ def check_win_bot(board, bot):
     return [False]
 
 def check_win_player(board, bot):
+    '''
+    Check if the player can win
+    '''
+    
     cases = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     if bot == 1:
         player = 0
@@ -79,6 +103,10 @@ def check_win_player(board, bot):
     return [False]
 
 def refit(board, bot):
+    '''
+    Refits the board from X/O to 1/0
+    '''
+
     new_board = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]
     if bot == "X":
         bots = 1
@@ -93,6 +121,10 @@ def refit(board, bot):
     return new_board
 
 def solve_best(board, bot):
+    '''
+    Puts all functions together to find best move
+    '''
+    
     if check_behind(board, bot):
         if check_iter(board, bot) == 1:
             if board[1][1] == -1:
@@ -101,7 +133,6 @@ def solve_best(board, bot):
                 return random.choice([0, 2, 6, 8])
         else:
             return random.choice(ret_empty(board))
-
     else:
         if check_iter(board, bot) == 1:
             if board[0][0] == bot:
@@ -143,6 +174,10 @@ def solve_best(board, bot):
             return random.choice(ret_empty(board))
 
 def move(board, bot):
+    '''
+    If not a guaranteed win, check the best move
+    '''
+    
     board = refit(board, bot)
     if bot == "X":
         bot = 1
