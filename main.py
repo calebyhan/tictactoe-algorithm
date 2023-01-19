@@ -21,10 +21,13 @@ def game():
             print("Your move.")
             while True:
                 user_input = int(input("Enter your move: "))
-                if board1.place(user_input) == False:
-                    print("That place is taken. Try again.")
-                else:
-                    break
+                try:
+                    if board1.place(user_input) == False:
+                        print("That place is taken. Try again.")
+                    else:
+                        break
+                except:
+                    print("Invalid move. try again.")
             print(board1)
         else:
             print("My turn.\n")
